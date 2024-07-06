@@ -1,4 +1,11 @@
-import uvicorn
+from fastapi import FastAPI
 
-if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=80, reload=True)
+from app.controller import DummyController
+from app.controller import UserController
+
+app = FastAPI()
+
+app.include_router(DummyController.router)
+app.include_router(UserController.router)
+
+# if __name__ == "__main__":
